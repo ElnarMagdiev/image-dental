@@ -1,24 +1,23 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Courgette");
 .bg-mattBlackLight {
-  /*background-color: #303337;*/
-  background-color: #FFFFFF;
+  background-color: #303337;
 }
 
 .text-mattBlackLight {
-  /*color: #303337;*/
-  color: #000000;
+  color: #303337;
+  /*color: #000000;*/
 }
 
 .bg-mattBlackDark, body, .nav-link:hover, .nav-link.active {
-  /*background-color: #212121;*/
-  background-color: #FFFFFF;
+  background-color: #212121;
+  /*background-color: #FFFFFF;*/
 
 }
 
 .text-mattBlackDark {
-  color: #212121;
-  /*color: #000000;*/
+  /*color: #212121;*/
+  color: #000000;
 }
 
 .bg-mattGray {
@@ -26,8 +25,8 @@
 }
 
 .text-mattGray, body, .nav-link .icon, .nav-link .text {
-  /*color: #878d8d;*/
-  color: #000000;
+  color: #878d8d;
+  /*color: #000000;*/
 }
 
 .bg-mattRed {
