@@ -8,6 +8,7 @@ public class UserSettings {
 
     @Id
     private Long id;
+
     private boolean darkTheme;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

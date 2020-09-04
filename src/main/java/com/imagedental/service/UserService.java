@@ -18,7 +18,6 @@ public class UserService implements UserDetailsService {
         this.userRepo = userRepo;
     }
 
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
@@ -29,5 +28,10 @@ public class UserService implements UserDetailsService {
         }
 
         return user;
+    }
+
+    @Autowired
+    public PasswordEncoder getPasswordEncoder() {
+        return passwordEncoder;
     }
 }
