@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Image laboratory</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/static/css/style.css}"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 </head>
 <body>
 <input type="checkbox" id="check">
@@ -14,29 +16,58 @@
 		<i class="fas fa-bars" id="sidebar_btn"></i>
 	</label>
 	<div class="left_area">
-		<h3>Image <span>laboratory</span></h3>
+		<h3>Имидж <span>Лаборатория</span></h3>
 	</div>	
 	<div class="right_area">
-		<a href="#" class="logout_btn">Logout</a>
+		<a href="#" class="fas fa-power-off logout_btn"></a>
 	</div>
 </header>
 <!-- header area end-->
 
+<!--mobile nav bar start-->
+<div class="mobile_nav">
+	<div class="nav_bar">
+		<img src="/static/img/elnar.png" class="mobile_profile_image" alt="">
+		<i class="fa fa-bars nav_btn"></i>
+	</div>
+	<div class="mobile_nav_items">
+		<a href="#"><i class="fas fa-desktop"></i><span>Главная</span></a>
+		<a href="#"><i class="fas fa-cogs"></i><span>Профиль</span></a>
+		<a href="#"><i class="fas fa-table"></i><span>Таблицы</span></a>
+		<a href="#"><i class="fas fa-th"></i><span>Формы</span></a>
+		<a href="#"><i class="fas fa-info-circle"></i><span>Информация</span></a>
+		<a href="#"><i class="fas fa-sliders-h"></i><span>Настройки</span></a>
+	</div>
+</div>
+
+<!--mobile nav bar end-->
+
 <!-- sidebar area start-->
 <div class="sidebar">
-	<center>
+	<div class="profile_info">
 		<img src="/static/img/elnar.png" class="profile_image" alt="">
 		<h4>Elnar</h4>
-	</center>
-	<a href="#"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-	<a href="#"><i class="fas fa-cogs"></i><span>Components</span></a>
-	<a href="#"><i class="fas fa-table"></i><span>Tables</span></a>
-	<a href="#"><i class="fas fa-th"></i><span>Forms</span></a>
-	<a href="#"><i class="fas fa-info-circle"></i><span>About</span></a>
-	<a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+	</div>
+	<a href="#"><i class="fas fa-desktop"></i><span>Главная</span></a>
+	<a href="#"><i class="fas fa-cogs"></i><span>Профиль</span></a>
+	<a href="#"><i class="fas fa-table"></i><span>Таблицы</span></a>
+	<a href="#"><i class="fas fa-th"></i><span>Формы</span></a>
+	<a href="#"><i class="fas fa-info-circle"></i><span>Информация</span></a>
+	<a href="#"><i class="fas fa-sliders-h"></i><span>Настройки</span></a>
 </div>
 <!-- sidebar area end-->
 
-<div class="content"></div>
+<div class="content">
+
+</div>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.nav_btn').click(function () {
+			$('.mobile_nav_items').toggleClass('active');
+		})
+	})
+</script>
 </body>
 </html>
