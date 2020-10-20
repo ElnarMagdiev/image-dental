@@ -9,12 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-//    @GetMapping("/")
-//    public String index(@AuthenticationPrincipal User user, Model model) {
-//        model.addAttribute("username", user.getUsername());
-//        return "index";
-//    }
-
     @GetMapping("/")
     public String index(Model model) {
         return "index";
