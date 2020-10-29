@@ -30,6 +30,7 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+
     @Autowired
     public PasswordEncoder getPasswordEncoder() {
         return passwordEncoder;

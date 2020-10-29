@@ -1,5 +1,7 @@
 package com.imagedental.entities;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.imagedental.deserializer.UserDeserializer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,10 +10,12 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "usr")
+@JsonDeserialize(using = UserDeserializer.class)
 public class User implements UserDetails, Serializable {
 
     @Id
@@ -29,8 +33,13 @@ public class User implements UserDetails, Serializable {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Operation> operations;
+
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
     private UserSettings settings;
+
+
 
     private boolean active;
 
@@ -53,6 +62,14 @@ public class User implements UserDetails, Serializable {
 
     public String getUsername() {
         return username;
+    }
+
+    public Set<Operation> getOperations() {
+        return operations;
+    }
+
+    public void setOperations(Set<Operation> operations) {
+        this.operations = operations;
     }
 
     @Override
@@ -141,5 +158,26 @@ public class User implements UserDetails, Serializable {
     }
 
     public User() {
+    }
+
+    public User(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id.equals(user.id) &&
+                username.equals(user.username) &&
+                password.equals(user.password) &&
+                firstName.equals(user.firstName) &&
+                lastName.equals(user.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, firstName, lastName);
     }
 }

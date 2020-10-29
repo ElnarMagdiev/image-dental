@@ -6,26 +6,24 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd.MM.yyyy")
-    @JsonFormat(pattern="dd.MM.yyyy")
+    @JsonFormat(pattern = "dd.MM.yyyy")
     private Date deadline;
 
     private String guid;
 
-    @ElementCollection
-    @MapKeyColumn(name = "executor")
-    @Column(name = "content")
-    private Map<String, String> operations = new HashMap<>();
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    private Set<Operation> operations;
 
     public Order() {
     }
@@ -36,6 +34,14 @@ public class Order implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Set<Operation> getOperations() {
+        return operations;
+    }
+
+    public void setOperations(Set<Operation> operations) {
+        this.operations = operations;
     }
 
     public Date getDeadline() {
@@ -54,11 +60,4 @@ public class Order implements Serializable {
         this.guid = guid;
     }
 
-    public Map<String, String> getOperations() {
-        return operations;
-    }
-
-    public void setOperations(Map<String, String> operations) {
-        this.operations = operations;
-    }
 }
